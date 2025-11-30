@@ -2,7 +2,6 @@
   "recommendations": [
     "charliermarsh.ruff",
     "davidanson.vscode-markdownlint",
-    "eamodio.gitlens",
     "editorconfig.editorconfig",
     "github.copilot-chat",
     "github.copilot",
@@ -19,7 +18,6 @@
     "ms-toolsai.vscode-jupyter-cell-tags",
     "oderwat.indent-rainbow",
     "redhat.vscode-yaml",
-    "seatonjiang.gitmoji-vscode",
     "streetsidesoftware.code-spell-checker",
     "tamasfe.even-better-toml",
     "usernamehw.errorlens",
