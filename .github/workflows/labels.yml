@@ -11,7 +11,11 @@ on:
     paths:
       - '.github/labels.yml'
       - '.github/workflows/labels.yml'
-#
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 jobs:
   labeler:
     runs-on: ubuntu-latest
@@ -23,10 +27,9 @@ jobs:
         name: Run Labeler
         uses: crazy-max/ghaction-github-labeler@v6
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           yaml-file: .github/labels.yml
           dry-run: ${{ github.event_name == 'pull_request' }}
           exclude: |
             help*
             *issue
-#

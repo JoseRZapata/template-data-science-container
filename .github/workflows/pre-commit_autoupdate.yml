@@ -1,29 +1,30 @@
 name: Pre-commit auto-update
-# PAT github secret has to be created with repo scope
-# add the secret to the repo settings
 on:
   # every monday
   schedule:
     - cron: "0 7 * * 1"
   # on demand
   workflow_dispatch:
-#
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   pre-commit-update:
     runs-on: ubuntu-latest
-    name:
+    name: pre-commit-update
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Update pre-commit hooks
         uses: brokenpip3/action-pre-commit-update@0.0.3
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           update-freeze: false
       - name: Add label
         uses: actions/github-script@v8
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { data: pullRequests } = await github.rest.pulls.list({
               owner: context.repo.owner,
